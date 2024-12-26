@@ -30,7 +30,7 @@ def main():
         pic[:, :, i][~mask] = 0
 
     with open('哈工大停用词表.txt', 'r', encoding='utf-8') as f:
-        stop_words = [line.strip() for line in f.readlines()]
+        stop_words = [line.strip() for line in f]
 
     with open('comments.txt', 'r', encoding='utf-8') as f:
         words = [word for word in jieba.cut(f.read()) if word not in stop_words]
@@ -51,7 +51,7 @@ def main():
 
     fig, ax = plt.subplots()
     ax.imshow(wc, interpolation='bilinear')
-    ax.axis('off')
+    ax.set_axis_off()
     fig.tight_layout()
 
     fig.savefig('ayachi_nene.png', dpi=300)
